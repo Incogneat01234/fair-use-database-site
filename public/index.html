@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fair Use Database</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/brand/favicon-192.png">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="/styles.css?v=20260813m">
+<!-- Google tag (gtag.js) — ads signals off; hash-route page views sent manually
+     because GA4 enhanced measurement does not observe hashchange. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SH9EBX8KNR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SH9EBX8KNR', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+  window.addEventListener('hashchange', function () {
+    gtag('event', 'page_view', {
+      page_location: location.origin + '/' + location.hash,
+      page_path: '/' + location.hash
+    });
+  });
+</script>
+</head>
+<body>
+<header>
+  <div class="masthead-row">
+    <h1><a href="#/" id="home-link"><img class="masthead-logo" alt="The Fair Use Database"
+      src="/brand/fud_header_1x.png"
+      srcset="/brand/fud_header_1x.png 1x, /brand/fud_header_2x.png 2x"></a></h1>
+    <span class="release-badge" id="release-badge">v0.2.0 · Through July 8, 2026</span>
+  </div>
+</header>
+
+<aside id="side-nav" aria-label="Site">
+  <a href="#/" class="side-logo" aria-label="The Fair Use Database home">
+    <img class="side-nav-mark" src="/brand/fud_mark_96.png" alt="">
+    <span class="side-nav-brand">FUD</span>
+  </a>
+  <nav class="side-links">
+    <a href="#/search" data-tab="search">Search</a>
+    <a href="#/ask" data-tab="ask">Ask Folsom</a>
+    <a href="#/mycases" data-tab="mycases">My Cases</a>
+    <a href="#/stats" data-tab="stats">Statistics</a>
+    <a href="#/about" data-tab="about">Methods</a>
+  </nav>
+  <div class="side-user" id="account-box"></div>
+</aside>
+
+<main id="main">
+  <section id="view-gate" class="view hidden">
+    <div class="gate-split">
+      <div class="gate-left">
+        <p class="eyebrow">Federal fair use, holding by holding, quote by quote</p>
+        <h2 class="hero-title">Search the cases. Ask the corpus.</h2>
+        <div class="gate-rule"></div>
+        <h3>About</h3>
+        <p>The Fair Use Database codes every substantive federal fair use opinion, from the
+        doctrine's early antecedents through July 8, 2026. Search verified, pin-cited court
+        language directly or ask Folsom, a research assistant grounded only in the coded
+        corpus. Every Folsom answer cites its evidence and links back to the underlying case
+        records. The coding is validated against 453 human-coded analyses.</p>
+        <h3>How to use it</h3>
+        <ol class="gate-steps">
+          <li><span class="step-num">1</span>
+            <span><strong>Search the courts' words</strong> by language, case, court,
+            factor, or outcome.</span></li>
+          <li><span class="step-num">2</span>
+            <span><strong>Ask Folsom</strong> for cited answers and corpus charts drawn
+            only from the coded data.</span></li>
+          <li><span class="step-num">3</span>
+            <span><strong>Follow and organize the authorities</strong> through case-level
+            deep links, My Cases sets, and copy-ready citations.</span></li>
+        </ol>
+        <div class="signin-box">
+          <a class="google-btn signin-link" href="/auth/login">
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Sign in with Google</a>
+          <a class="google-btn signin-link ms-btn" href="/auth/ms/login">
+            <svg width="18" height="18" viewBox="0 0 21 21" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg>
+            Sign in with Microsoft</a>
+          <div id="email-signin" class="hidden">
+            <div class="or-rule"><span>or</span></div>
+            <form id="email-start-form" class="email-form">
+              <input type="email" id="email-input" placeholder="you@example.com" required
+                autocomplete="email">
+              <button type="submit">Email me a code</button>
+            </form>
+            <form id="email-code-form" class="email-form hidden">
+              <p class="meta" id="email-sent-note"></p>
+              <input type="text" id="code-input" inputmode="numeric" pattern="[0-9]{6}"
+                maxlength="6" placeholder="6-digit code" required autocomplete="one-time-code">
+              <button type="submit">Verify code</button>
+            </form>
+            <p class="meta hidden" id="email-error"></p>
+          </div>
+          <p class="meta">Signing in records your name and email address, and the site logs
+          your searches and the pages you view, so we know who uses the database and how.
+          Aggregate usage statistics are collected with Google Analytics; nothing is sold
+          or otherwise shared.</p>
+        </div>
+      </div>
+      <div class="gate-right">
+        <div class="app-preview" aria-hidden="true">
+          <div class="preview-side">
+            <img class="side-mark" src="/brand/fud_mark_96.png" alt="">
+            <span class="side-brand">FUD</span>
+            <span class="side-item">Search</span>
+            <span class="side-item active">Ask Folsom</span>
+            <span class="side-item">My Cases</span>
+            <span class="side-item">Statistics</span>
+            <span class="side-item">Methods</span>
+          </div>
+          <div class="preview-main preview-folsom">
+            <div class="preview-ask-head">
+              <span class="preview-ask-title">Ask Folsom</span>
+              <span class="preview-beta">Beta</span>
+            </div>
+            <div class="preview-question">
+              <span class="preview-speaker">Research question</span>
+              Compare <em>Warhol</em> and <em>Google</em> on transformative purpose.
+            </div>
+            <div class="preview-answer">
+              <img class="preview-owl" src="/folsom_owl.png" alt="">
+              <div>
+                <p class="preview-answer-kicker">Grounded answer</p>
+                <p class="preview-answer-copy">Both decisions make the inquiry
+                use-specific. <em>Google</em> examines copied code in a new computing
+                environment; <em>Warhol</em> focuses on the purpose of the challenged
+                magazine license.</p>
+                <div class="preview-citations">
+                  <span>Google LLC v. Oracle Am., Inc., 593 U.S. 1, 28&ndash;30
+                  (2021).</span>
+                  <span>Andy Warhol Found. for the Visual Arts, Inc. v. Goldsmith,
+                  598 U.S. 508, 526&ndash;31 (2023).</span>
+                </div>
+              </div>
+            </div>
+            <div class="preview-corpus-card">
+              <div>
+                <span class="preview-corpus-kind">Case comparison</span>
+                <span class="preview-corpus-meta">2 controlling opinions</span>
+              </div>
+              <span class="preview-corpus-open">Open cited cases &#8599;</span>
+            </div>
+            <div class="preview-capabilities">
+              <span>Cited answers</span>
+              <span>Charts with Bluebook citations</span>
+              <span>Case-level deep links</span>
+            </div>
+            <p class="preview-note">Folsom answers only from the coded corpus. Verify
+            linked authorities before relying on them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-search" class="view">
+    <div class="search-band">
+      <form id="search-form" class="search-one-row">
+        <input type="search" id="search-input" aria-label="Search court language or a case name"
+          placeholder="Search court language or a case name">
+        <button type="submit">Search</button>
+        <select id="sf-court" aria-label="Court level">
+          <option value="">Court: all federal</option>
+          <option value="supreme">Supreme Court</option>
+          <option value="circuit">Courts of Appeals</option>
+          <option value="district">District Courts</option>
+        </select>
+        <select id="sf-factor" aria-label="Factor">
+          <option value="">Factor: any</option>
+          <option value="1">Factor 1 &mdash; purpose</option>
+          <option value="2">Factor 2 &mdash; nature</option>
+          <option value="3">Factor 3 &mdash; amount</option>
+          <option value="4">Factor 4 &mdash; market</option>
+        </select>
+        <select id="sf-outcome" aria-label="Outcome">
+          <option value="">Outcome: any</option>
+          <option value="fair_use">Fair use</option>
+          <option value="not_fair_use">Not fair use</option>
+          <option value="unresolved">Unresolved</option>
+          <option value="not_reached">Not reached</option>
+        </select>
+        <button type="button" id="filters-toggle" class="filters-toggle">Filters</button>
+        <div class="mode-toggle" role="tablist" aria-label="Result type">
+          <button type="button" id="mode-quotes" class="mode-btn active">Quotes</button>
+          <button type="button" id="mode-cases" class="mode-btn">Cases</button>
+        </div>
+        <span class="sf-count" id="sf-count"></span>
+      </form>
+      <div id="filters-card" class="filters-card hidden">
+        <div class="filters-grid">
+          <fieldset class="filter-group">
+            <legend>Court</legend>
+            <label>Circuit
+              <select id="af-circuit">
+                <option value="">Any</option>
+                <option value="scotus">Supreme Court</option>
+                <option value="ca1">1st Circuit</option>
+                <option value="ca2">2d Circuit</option>
+                <option value="ca3">3d Circuit</option>
+                <option value="ca4">4th Circuit</option>
+                <option value="ca5">5th Circuit</option>
+                <option value="ca6">6th Circuit</option>
+                <option value="ca7">7th Circuit</option>
+                <option value="ca8">8th Circuit</option>
+                <option value="ca9">9th Circuit</option>
+                <option value="ca10">10th Circuit</option>
+                <option value="ca11">11th Circuit</option>
+                <option value="cadc">D.C. Circuit</option>
+                <option value="cafc">Federal Circuit</option>
+                <option value="fedcl">Court of Federal Claims</option>
+              </select>
+            </label>
+            <label>Specific court
+              <select id="af-court-exact"><option value="">Any</option></select>
+            </label>
+            <label>Publication
+              <select id="af-pub">
+                <option value="">Any</option>
+                <option value="published">Published</option>
+                <option value="unpublished">Unpublished</option>
+              </select>
+            </label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend>Decision date</legend>
+            <label>From year
+              <input type="number" id="af-date-from" min="1841" max="2026" placeholder="e.g. 1994">
+            </label>
+            <label>To year
+              <input type="number" id="af-date-to" min="1841" max="2026" placeholder="e.g. 2026">
+            </label>
+            <label>Merits
+              <select id="af-merits">
+                <option value="">Any stage</option>
+                <option value="yes">Final merits determination</option>
+              </select>
+            </label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend>Procedure</legend>
+            <label>Posture
+              <select id="af-posture"><option value="">Any</option></select>
+            </label>
+            <label>Quote voice
+              <select id="af-voice">
+                <option value="">Any</option>
+                <option value="deciding_court_controlling">Deciding court (controlling)</option>
+                <option value="deciding_court_majority">Deciding court (majority)</option>
+                <option value="deciding_court_dissent">Dissent</option>
+                <option value="lower_court">Lower court</option>
+                <option value="party">Party statement</option>
+                <option value="expert_or_witness">Expert / witness</option>
+              </select>
+            </label>
+            <label>Factor direction
+              <select id="af-direction">
+                <option value="">Any</option>
+                <option value="favors_fair_use">Favors fair use</option>
+                <option value="disfavors_fair_use">Disfavors fair use</option>
+                <option value="neutral">Neutral</option>
+                <option value="mixed">Mixed</option>
+              </select>
+            </label>
+          </fieldset>
+          <fieldset class="filter-group">
+            <legend>Subject matter</legend>
+            <label>Work type
+              <select id="af-work-type"><option value="">Any</option></select>
+            </label>
+            <label>Use type
+              <select id="af-use-type"><option value="">Any</option></select>
+            </label>
+            <label>Technology
+              <select id="af-tech"><option value="">Any</option></select>
+            </label>
+          </fieldset>
+        </div>
+        <div class="filters-actions">
+          <button type="button" id="filters-clear" class="btn-plain">Clear all</button>
+          <button type="button" id="filters-apply">Apply filters</button>
+        </div>
+      </div>
+      <div id="filter-tokens" class="filter-tokens"></div>
+    </div>
+    <div class="results-split">
+      <div id="search-results"></div>
+      <aside id="context-panel" class="context-panel hidden" aria-label="Selected result"></aside>
+    </div>
+    <div id="home-extras">
+      <h3 class="section-head">Landmarks in the database</h3>
+      <div class="notable-grid">
+        <a class="notable-card" href="#/case/OP001219">
+          <div class="preview-title">Sony Corp. v. Universal City Studios
+            <span class="badge fair_use">Fair use</span></div>
+          <div class="preview-meta">464 U.S. 417 &middot; U.S. &middot; 1984</div>
+          <p class="preview-quote">&#8220;&#8230;this record amply supports the District
+          Court&#8217;s conclusion that home time-shifting is fair use.&#8221;</p>
+        </a>
+        <a class="notable-card" href="#/case/OP000896">
+          <div class="preview-title">Harper &amp; Row v. Nation Enters.
+            <span class="badge not_fair_use">Not fair use</span></div>
+          <div class="preview-meta">471 U.S. 539 &middot; U.S. &middot; 1985</div>
+          <p class="preview-quote">&#8220;The Nation&#8217;s use had not merely the incidental
+          effect but the intended purpose of supplanting the copyright holder&#8217;s
+          commercially valuable right of first publication.&#8221;</p>
+        </a>
+        <a class="notable-card" href="#/case/OP000649">
+          <div class="preview-title">Campbell v. Acuff-Rose Music, Inc.
+            <span class="badge unresolved">Remanded</span></div>
+          <div class="preview-meta">510 U.S. 569 &middot; U.S. &middot; 1994</div>
+          <p class="preview-quote">&#8220;The more transformative the new work, the less will
+          be the significance of other factors, like commercialism&#8230;&#8221;</p>
+        </a>
+        <a class="notable-card" href="#/case/OP000083">
+          <div class="preview-title">Google LLC v. Oracle Am., Inc.
+            <span class="badge fair_use">Fair use</span></div>
+          <div class="preview-meta">593 U.S. 1 &middot; U.S. &middot; 2021</div>
+          <p class="preview-quote">&#8220;These and related facts convince us that the
+          &#8216;purpose and character&#8217; of Google&#8217;s copying was
+          transformative&#8230;&#8221;</p>
+        </a>
+        <a class="notable-card" href="#/case/OP000179">
+          <div class="preview-title">Andy Warhol Found. v. Goldsmith
+            <span class="badge not_fair_use">Not fair use</span></div>
+          <div class="preview-meta">598 U.S. 508 &middot; U.S. &middot; 2023</div>
+          <p class="preview-quote">&#8220;AWF&#8217;s use of Goldsmith&#8217;s photograph
+          does not target the photograph, nor has AWF offered another compelling
+          justification for the use.&#8221;</p>
+        </a>
+        <a class="notable-card" href="#/case/OP000301">
+          <div class="preview-title">Authors Guild v. Google, Inc.
+            <span class="badge fair_use">Fair use</span></div>
+          <div class="preview-meta">804 F.3d 202 &middot; 2d Cir. &middot; 2015</div>
+          <p class="preview-quote">&#8220;While Google makes an unauthorized digital copy of
+          the entire book, it does not reveal that digital copy to the public.&#8221;</p>
+        </a>
+        <a class="notable-card" href="#/case/OP000900">
+          <div class="preview-title">Hachette Book Grp. v. Internet Archive
+            <span class="badge not_fair_use">Not fair use</span></div>
+          <div class="preview-meta">115 F.4th 163 &middot; 2d Cir. &middot; 2024</div>
+          <p class="preview-quote">&#8220;IA&#8217;s Free Digital Library serves as a
+          satisfactory substitute for the original Works.&#8221;</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-mycases" class="view hidden">
+    <h2>My cases</h2>
+    <p class="meta">Folders are saved to your account. Save cases from any case
+      page or search result.</p>
+    <form id="folder-create" class="folder-create">
+      <input id="folder-name" maxlength="60" placeholder="New folder name"
+        autocomplete="off" />
+      <button type="submit">Create folder</button>
+    </form>
+    <div id="folders-list"></div>
+  </section>
+
+  <section id="view-ask" class="view hidden">
+    <div class="ask-layout">
+      <div class="ask-wrap">
+        <div class="ask-head">
+          <h2>Ask Folsom <span class="badge beta-badge">beta</span></h2>
+          <button type="button" id="ask-reset" class="ask-reset hidden">
+            <span aria-hidden="true">＋</span> New question</button>
+          <button type="button" id="ask-history-toggle" class="ask-history-toggle"
+            aria-controls="ask-history" aria-expanded="false">Saved chats</button>
+        </div>
+        <div id="ask-messages" class="ask-messages"></div>
+        <form id="ask-form" class="ask-form">
+          <label for="ask-input" class="ask-input-label">Research question</label>
+          <div class="ask-form-row">
+            <textarea id="ask-input" rows="2" maxlength="2000"
+              placeholder="Ask about the fair use corpus…"></textarea>
+            <button type="submit" id="ask-send">Ask Folsom</button>
+          </div>
+          <span class="ask-input-hint">Enter to submit; Shift+Enter for a new line.</span>
+        </form>
+        <p class="meta ask-disclosure">Folsom answers only from the coded corpus
+          (release v0.2.0, opinions decided through July 8, 2026) and cites every
+          claim. AI responses may include hallucinations. Verify quotes and
+          holdings against the linked opinions before relying on them. Research
+          findings, not legal advice.</p>
+      </div>
+      <aside class="ask-rail" aria-label="Saved chats">
+        <h3 class="ask-rail-head">Saved chats</h3>
+        <div id="ask-history" class="ask-history"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-stats" class="view hidden">
+    <div id="stats-body">Loading…</div>
+  </section>
+
+  <section id="view-case" class="view hidden">
+    <div class="case-split">
+      <div id="case-body" class="case-analysis"></div>
+      <div id="case-pdf-pane" class="case-pdf-pane hidden">
+        <div class="pdf-toolbar" role="toolbar" aria-label="Opinion PDF controls">
+          <div class="pdf-toolbar-group">
+            <button type="button" id="pdf-prev" aria-label="Previous page">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+            <span id="pdf-pageinfo" class="pdf-pageinfo" aria-live="polite">&ndash; / &ndash;</span>
+            <button type="button" id="pdf-next" aria-label="Next page">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
+          </div>
+          <span class="pdf-toolbar-divider" aria-hidden="true"></span>
+          <div class="pdf-toolbar-group">
+            <button type="button" id="pdf-zoom-out" aria-label="Zoom out">&minus;</button>
+            <span id="pdf-zoom-level" class="pdf-zoom-level">100%</span>
+            <button type="button" id="pdf-zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" id="pdf-fit" class="pdf-fit">Fit width</button>
+          </div>
+          <span class="pdf-status" id="pdf-status" role="status"></span>
+          <a id="pdf-download" class="pdf-download" href="#" download>Download PDF</a>
+        </div>
+        <div id="pdf-scroll" class="pdf-scroll"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-about" class="view hidden">
+    <h2>Data &amp; methods</h2>
+    <p>This database codes every federal court opinion that substantively analyzes
+    copyright fair use under 17 U.S.C. § 107. Each opinion is decomposed into
+    work/use units; each unit carries factor-by-factor coding with direction,
+    weight, doctrinal components, and verbatim quotes tied to page numbers in
+    the underlying opinion.</p>
+
+    <h3>Is this dataset suitable for your study?</h3>
+    <table class="stats">
+      <tr><th>Population</th><td>Federal fair use opinions, early antecedents through
+        July 8, 2026, screened from 3,446 candidates drawn from a Lexis+ boolean union
+        reconciled against CourtListener sweeps, the Copyright Office Fair Use Index, and a
+        merits seed set. Verified superset of the Beebe (1978&#8211;2019) and UCI FUJP
+        (2019&#8211;2026) case lists.</td></tr>
+      <tr><th>Unit of analysis</th><td>The work/use pairing: one court's fair use analysis of
+        one copyrighted work or homogeneous work family against one challenged use. 2,454
+        units across 1,659 substantive opinions; 252 substantive opinions carry opinion-level
+        metadata but no codable unit.</td></tr>
+      <tr><th>Cohorts</th><td>decisive_merits (744): fair use decided on the merits.
+        substantive_other (905): substantive fair use analysis without a decisive merits
+        holding. uncertain (10): screening could not classify. excluded (1,787):
+        non-substantive; listed in the screening ledger only.</td></tr>
+      <tr><th>Coding depth</th><td>Per unit: holding outcome, scope, controlling status,
+        final merits status. Per factor: direction, directional score, stated weight,
+        34 component codes with polarity. Plus factor relationships, alternative grounds,
+        procedural posture, motion outcomes, and 30,828 selected verbatim quotes.</td></tr>
+      <tr><th>Validation</th><td>453 human-coded gold units: 97.4% holding-outcome agreement
+        (95% CI 95.5&#8211;98.6, &#954; 0.950), 94.7% factor-direction agreement
+        (CI 93.4&#8211;95.8, &#954; 0.911), polar direction disagreement 0.29%
+        (CI 0.11&#8211;0.74). Corpus-scale test-retest reliability separately measured. Every
+        machine-human disagreement is documented in a queue; none is silently
+        resolved.</td></tr>
+      <tr><th>Provisional share</th><td>1,136 of 2,454 units (46.3%) carry machine-proposed
+        boundaries flagged provisional.</td></tr>
+      <tr><th>Release</th><td id="about-release">v0.2.0, coverage through 2026-07-08.</td></tr>
+      <tr><th>Formats</th><td>Interactive site and API today. Frozen downloads (SQLite and
+        unit-level CSV) with DOI and checksums arrive with the release layer now in
+        progress.</td></tr>
+    </table>
+
+    <h3>About Folsom</h3>
+    <p>Ask Folsom is a research assistant grounded exclusively in this coded
+    corpus. It answers by running the same searches and counts available on
+    this site &mdash; quotation search, case lookup, and corpus statistics
+    &mdash; and every citation it offers is issued by the server from the
+    records those queries actually returned. Folsom cannot cite anything
+    outside the corpus, and citations it has not been issued are discarded
+    before display.</p>
+    <p>Its limits: Folsom is a language model and may still misread or
+    misconnect the evidence it retrieves ("hallucinate"), so verify quotes and
+    holdings against the linked opinions before relying on them. Its knowledge
+    ends at the corpus coverage date; it does not know later decisions.
+    Statistics it reports carry their denominator, missing-value count, and
+    release identifier, and exported charts embed a suggested citation with
+    the date accessed. Folsom offers research findings, not legal advice.</p>
+
+    <h3>Screening</h3>
+    <p>The corpus was screened from a wider sweep of candidate opinions. The
+    coded database covers the substantive cohorts; a screening ledger records
+    every screened opinion with its cohort assignment, so the funnel from
+    candidate pool to coded corpus is auditable end to end.</p>
+    <p>Coding is model-assisted with mechanical validation: every quote is
+    verified verbatim against the source text, and a statistically meaningful
+    sample is validated against human gold coding. Provisional codings are
+    flagged as such.</p>
+    <p>Court opinions are works of the United States government and are not
+    subject to copyright. Quotations shown here come from the public record.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <section class="footer-section" aria-labelledby="footer-corpus-heading">
+        <h2 class="footer-heading" id="footer-corpus-heading">Corpus</h2>
+        <p class="footer-primary" id="footer-data-version">Release v0.2.0 · coverage through July 8, 2026.</p>
+        <p class="meta" id="footer-corpus-counts">1,659 federal opinions · 2,454 work/use
+        analyses · 30,828 selected quotes.</p>
+        <p class="footer-links meta">
+          <a href="#/about">Data &amp; methods</a>
+          <span aria-hidden="true">·</span>
+          <a href="#/stats">Statistics &amp; citable charts</a>
+        </p>
+      </section>
+      <section class="footer-section" aria-labelledby="footer-citation-heading">
+        <h2 class="footer-heading" id="footer-citation-heading">Cite this database</h2>
+        <p class="footer-citation">Thomas A. Reichert, <cite>The Fair Use Database</cite>,
+        release <span id="footer-citation-release">v0.2.0</span>
+        (<span id="footer-citation-year">2026</span>), https://thefairusedatabase.com.</p>
+      </section>
+      <section class="footer-section" aria-labelledby="footer-maintainer-heading">
+        <h2 class="footer-heading" id="footer-maintainer-heading">Maintained by</h2>
+        <p class="footer-primary">Thomas A. Reichert</p>
+        <p class="meta">Southern Illinois University</p>
+        <p class="footer-links meta">
+          <a href="#" id="contact-link">Contact &amp; corrections</a>
+        </p>
+      </section>
+    </div>
+    <p class="footer-disclaimer meta">The Fair Use Database is a research tool, not legal advice.
+    Corpus coding is AI-assisted and verified against source text. Verify quotations, holdings,
+    and citations against the underlying opinions before relying on them.</p>
+  </div>
+</footer>
+
+<dialog id="onboarding-dialog"
+  aria-labelledby="onboarding-title"
+  aria-describedby="onboarding-intro">
+  <div class="onboarding-card">
+    <div class="onboarding-heading">
+      <p class="eyebrow">A brief orientation</p>
+      <h2 id="onboarding-title">Welcome to The Fair Use Database</h2>
+      <p id="onboarding-intro">Four ways to begin your research.</p>
+    </div>
+
+    <div class="onboarding-folsom">
+      <img src="/folsom_owl.png" alt="" width="54" height="54">
+      <p><strong>Ask Folsom</strong> is grounded only in the coded corpus and
+      links every answer back to its evidence.</p>
+    </div>
+
+    <ol class="onboarding-steps">
+      <li>
+        <strong>Search quotations.</strong>
+        Search court language or case names, then narrow the results by court,
+        factor, or outcome.
+      </li>
+      <li>
+        <strong>Ask Folsom.</strong>
+        Request cited synthesis, comparisons, or corpus charts.
+      </li>
+      <li>
+        <strong>Build My Cases sets.</strong>
+        Save authorities into reusable research folders.
+      </li>
+      <li>
+        <strong>Use Methods and citations.</strong>
+        Check coverage and validation, then copy citations from records and charts.
+      </li>
+    </ol>
+
+    <form method="dialog" class="onboarding-actions">
+      <label class="onboarding-never">
+        <input type="checkbox" id="onboarding-never">
+        <span>Don't show this again</span>
+      </label>
+      <button type="submit" value="dismiss" autofocus>Start researching</button>
+    </form>
+  </div>
+</dialog>
+
+<dialog id="contact-dialog">
+  <form id="contact-form">
+    <h2>Contact</h2>
+    <p class="contact-sub">Questions, corrections, or collaboration inquiries
+    go straight to Prof. Reichert.</p>
+    <label>Your name
+      <input type="text" name="name" required maxlength="200" autocomplete="name">
+    </label>
+    <label>Your email
+      <input type="email" name="email" required maxlength="200" autocomplete="email">
+    </label>
+    <label>Message
+      <textarea name="message" required minlength="10" maxlength="5000" rows="6"></textarea>
+    </label>
+    <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p id="contact-error" class="form-error hidden"></p>
+    <p id="contact-sent" class="contact-sent hidden">Message sent. Thank you.</p>
+    <div class="contact-actions">
+      <button type="button" id="contact-cancel" class="btn-plain">Cancel</button>
+      <button type="submit" id="contact-submit">Send message</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="/app.js?v=20260813m"></script>
+</body>
+</html>

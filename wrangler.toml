@@ -1,0 +1,34 @@
+name = "fair-use-site"
+main = "src/worker.js"
+compatibility_date = "2026-08-01"
+workers_dev = true
+
+routes = [
+  { pattern = "thefairusedatabase.com", custom_domain = true },
+  { pattern = "www.thefairusedatabase.com", custom_domain = true },
+]
+
+[vars]
+GOOGLE_CLIENT_ID = "822022506483-e7gcevh64ii56d9b6cnu1n2n2t7ftpav.apps.googleusercontent.com"
+MS_CLIENT_ID = "a3ee527b-17a1-432e-9323-35cd574a6bfe"
+
+[assets]
+directory = "public"
+binding = "ASSETS"
+
+[[r2_buckets]]
+binding = "OPINIONS"
+bucket_name = "fud-opinions"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fair-use-db"
+database_id = "4c64312d-2a2b-4298-9662-03af0bb9d2f7"
+
+# Operational database for the Folsom chat assistant: budget ledger, quotas,
+# leases, turn log. Separate from the corpus DB so corpus pushes and chat
+# accounting never contend and never share a blast radius.
+[[d1_databases]]
+binding = "OPS"
+database_name = "fud-ops"
+database_id = "23f51df0-58be-4afc-a73b-95e93ab8e160"
